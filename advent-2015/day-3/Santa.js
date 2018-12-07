@@ -3,7 +3,7 @@ class Santa {
   constructor(input) {
     this.input = input;
   }
-  
+
   // Part 1
   getVisitedHouses() {
     let x = 0;
@@ -56,14 +56,11 @@ class Santa {
 
     return this.input.split('').reduce((memo, character, index) => {
       let ref = santa;
-      let x = santa.x;
-      let y = santa.y;
-
       if (index % 2 === 0) {
         ref = robot;
-        x = robot.x;
-        y = robot.y;
       }
+
+      let { x , y } = ref;
 
       switch(character) {
         case '^': 
@@ -81,8 +78,7 @@ class Santa {
       }
 
 
-      ref.x = x;
-      ref.y = y;
+      ref = { x, y };
       let key = `${x},${y}`;
 
       if (!houses[key]) {
